@@ -1,0 +1,38 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/">
+    <mat-icon>add_shopping_cart</mat-icon> &nbsp;
+    <span class='font-weight-bold special-font bigger-fonts'>{{title}}</span>
+  </button>
+  <span class="fill-remaining-space"></span>
+  <button mat-raised-button color="primary" (click)="drawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-toolbar color="primary">
+  <div class="col-6 text-center ml-auto mr-auto">
+    <form [formGroup]="searchForm">
+      <mat-form-field class="search-inp-control text-center special-font">
+        <mat-icon matSuffix class="pointer" (click)="search()">search</mat-icon>
+        <input matInput placeholder="Search Product" [type]='"text"' autocomplete="off"
+          formControlName="searchCriteria">
+      </mat-form-field>
+    </form>
+  </div>
+</mat-toolbar>
+<mat-drawer-container class="example-container" autosize color="primary">
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-nav-list dense>
+      <a mat-list-item routerLink={{item.path}} *ngFor="let item of navigation$">
+        <mat-icon matListIcon>{{item.icon}}</mat-icon>
+        <h3 matLine class="font-weight-bold">{{item.name}} </h3>
+      </a>
+    </mat-nav-list>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</mat-drawer-container>

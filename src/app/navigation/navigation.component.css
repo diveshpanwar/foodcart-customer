@@ -1,0 +1,42 @@
+.fill-remaining-space {
+    /*This fills the remaining space, by using flexbox.
+ Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+}
+
+.custom-title-icon {
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+button.mat-menu-item {
+    font-family: 'Kaushan Script', cursive;
+}
+
+.bigger-fonts {
+    font-size: 1rem;
+}
+
+.inp-control {
+    font-size: 15px;
+}
+
+.search-inp-control {
+    width: 70%;
+    font-size: 15px;
+}
+
+.example-sidenav-content {
+    display: flex;
+    height: 100vh;
+}
+
+.example-sidenav {
+    padding: 2px;
+    display: flex;
+    min-width: 300px;
+}
+
+mat-nav-list {
+    width: 100%;
+}

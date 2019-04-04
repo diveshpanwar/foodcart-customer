@@ -34,7 +34,7 @@ export class NavigationComponent implements OnInit {
     private store: Store<{ navigation: any }>
   ) {
     store.pipe(select('navigation')).subscribe((data) => {
-      this.navigation$ =  data;
+      this.navigation$ = data;
     });
   }
 

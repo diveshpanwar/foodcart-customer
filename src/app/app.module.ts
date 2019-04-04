@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { NavigationReducer } from './store/reducers/navigation.reducer';
 import { OrderfoodComponent } from './orderfood/orderfood.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { OrderfoodComponent } from './orderfood/orderfood.component';
     NavigationComponent,
     LoginComponent,
     HomeComponent,
-    OrderfoodComponent
+    OrderfoodComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

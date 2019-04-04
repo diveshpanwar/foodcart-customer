@@ -22,7 +22,7 @@
 <mat-drawer-container class="example-container" autosize color="primary">
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-nav-list dense>
-      <a mat-list-item routerLink={{item.path}} *ngFor="let item of navigation$">
+      <a mat-list-item routerLink={{item.path}} *ngFor="let item of navigation$" (click)="drawer.toggle()">
         <mat-icon matListIcon>{{item.icon}}</mat-icon>
         <h3 matLine class="font-weight-bold">{{item.name}} </h3>
       </a>

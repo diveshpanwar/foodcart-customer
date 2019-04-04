@@ -1,2 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+.special-hr {
+    margin: 10px auto;
+    background-image: linear-gradient(-135deg, #a951ed 0, #02ccba 100%);
+    width: 90%;
+    min-height: 1px;
+}
+
+@font-face {
+    font-family : 'font-one';
+    src: url('assets/fonts/Kaushan_Script/KaushanScript-Regular.ttf')
+}
+
+@font-face {
+    font-family : 'font-two';
+    src: url('assets/fonts/Roboto_Slab/RobotoSlab-Regular.ttf');
+}
+
+@font-face {
+    font-family : 'font-three';
+    src: url('assets/fonts/Francois_One/FrancoisOne-Regular.ttf');
+}
+
+@font-face {
+    font-family : 'font-four';
+    src: url('assets/fonts/Heebo/Heebo-Medium.ttf');
+}
+
+@font-face {
+    font-family : 'font-five';
+    src: url('assets/fonts/Pacifico/Pacifico-Regular.ttf');
+}
+
+.title {
+    font-family: 'font-one';
+}
+
+.subtitle {
+    font-family: 'font-two';
+}

@@ -11,6 +11,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { StoreModule } from '@ngrx/store';
 import { NavigationReducer } from './store/reducers/navigation.reducer';
+import { OrderfoodComponent } from './orderfood/orderfood.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavigationReducer } from './store/reducers/navigation.reducer';
     AppComponent,
     NavigationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    OrderfoodComponent
   ],
   imports: [
     BrowserModule,

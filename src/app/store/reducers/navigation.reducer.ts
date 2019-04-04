@@ -3,9 +3,9 @@ import { ActionTypes } from '../actions/navigation.actions';
 
 const initialNavigation = [
     {
-        path: '/login',
-        icon: 'lock_open',
-        name: 'Login',
+        path: '/orderFood',
+        icon: 'payment',
+        name: 'Order Food',
         auth: 'false'
     },
     {

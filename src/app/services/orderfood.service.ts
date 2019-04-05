@@ -12,4 +12,8 @@ export class OrderfoodService {
   getDCList() {
     return this.http.get(apiURL + '/getAllDC');
   }
+
+  getFcCList(dc_id) {
+    return this.http.post(apiURL + '/getFCList', {dc_id});
+  }
 }

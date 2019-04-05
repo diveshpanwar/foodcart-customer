@@ -12,6 +12,8 @@ export class OrderfoodComponent implements OnInit {
   orderFoodForm: FormGroup;
   loadingData = true;
   dcList: any;
+  fcList: any;
+
   constructor(private fb: FormBuilder, private orderfoodService: OrderfoodService) { }
 
   ngOnInit() {
@@ -20,9 +22,10 @@ export class OrderfoodComponent implements OnInit {
       res => {
         this.dcList = res;
         this.loadingData = false;
-      }, 
+      },
       err => {
         console.log(err);
+        this.loadingData = false;
       }
     );
 
@@ -33,7 +36,17 @@ export class OrderfoodComponent implements OnInit {
   }
 
   dcChanged() {
-    console.info('DC Changged');
+    this.loadingData = true;
+    this.orderfoodService.getFcCList(this.orderFoodForm.get('dc_id').value).subscribe(
+      res => {
+        this.fcList = res;
+        console.log(this.fcList);
+        this.loadingData = false;
+      }, err => {
+        console.log(err);
+        this.loadingData = false;
+      }
+    );
   }
 
   processForm() {

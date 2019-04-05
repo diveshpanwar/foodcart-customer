@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {HttpClientModule } from '@angular/common/http';
-import {MatModule} from './common/mat/mat.module';
+import { HttpClientModule } from '@angular/common/http';
+import { MatModule } from './common/mat/mat.module';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
@@ -13,6 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { NavigationReducer } from './store/reducers/navigation.reducer';
 import { OrderfoodComponent } from './orderfood/orderfood.component';
 import { ErrorComponent } from './error/error.component';
+import { OrderfoodService } from './services/orderfood.service';
 
 
 @NgModule({
@@ -31,9 +32,12 @@ import { ErrorComponent } from './error/error.component';
     HttpClientModule,
     MatModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({ navigation: NavigationReducer })
   ],
-  providers: [],
+  providers: [
+    OrderfoodService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

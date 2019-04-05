@@ -1,11 +1,36 @@
-<div class="row">
+<div class="row" *ngIf="!loadingData">
   <div class="col-12">
     <h4 class="text-info mt-3 text-center font-weight-bold title">
       Order Food
     </h4>
     <hr class="special-hr">
-    <div class="col-8 text-center subtitle">
-      tester
+    <div class="col-8 ml-auto mr-auto subtitle">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-text text-center">
+            <form [formGroup]="orderFoodForm" (ngSubmit)="processForm()">
+              <div class="form-group">
+                <mat-form-field class="custom-form-control">
+                  <mat-label>Select a DC</mat-label>
+                  <mat-select formControlName="dc_id" (selectionChange)="dcChanged()" required="true">
+                    <mat-option *ngFor="let dc of dcList" value={{dc.id}}>{{dc.dc_name | titlecase}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="orderFoodForm.get('dc_id').hasError('required')" class="font-weight-bold">Please
+                    choose a DC</mat-error>
+                  <mat-hint>Please Select a DC to Proceed</mat-hint>
+                </mat-form-field>
+                <div class="form-group">
+                  <button type="submit" mat-raised-button color="primary" class="font-weight-bold">Proceed</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</div>
+
+<div class="loadingDiv">
+  <mat-progress-spinner mode="indeterminate" *ngIf="loadingData" diameter="40"></mat-progress-spinner>
 </div>

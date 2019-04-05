@@ -13,6 +13,7 @@ export class OrderfoodComponent implements OnInit {
   loadingData = true;
   dcList: any;
   fcList: any;
+  vendorList: any;
 
   constructor(private fb: FormBuilder, private orderfoodService: OrderfoodService) { }
 
@@ -31,7 +32,8 @@ export class OrderfoodComponent implements OnInit {
 
     this.orderFoodForm = this.fb.group({
       dc_id: ['', Validators.required],
-      fc_id: ['', Validators.required]
+      fc_id: ['', Validators.required],
+      vendor_id: ['', Validators.required]
     });
   }
 
@@ -40,7 +42,19 @@ export class OrderfoodComponent implements OnInit {
     this.orderfoodService.getFcCList(this.orderFoodForm.get('dc_id').value).subscribe(
       res => {
         this.fcList = res;
-        console.log(this.fcList);
+        this.loadingData = false;
+      }, err => {
+        console.log(err);
+        this.loadingData = false;
+      }
+    );
+  }
+
+  vendorChanged() {
+    this.loadingData = true;
+    this.orderfoodService.getVendorList(this.orderFoodForm.get('fc_id').value).subscribe(
+      res => {
+        this.vendorList = res;
         this.loadingData = false;
       }, err => {
         console.log(err);

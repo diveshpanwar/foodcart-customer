@@ -15,6 +15,7 @@ import { OrderfoodComponent } from './orderfood/orderfood.component';
 import { ErrorComponent } from './error/error.component';
 import { OrderfoodService } from './services/orderfood.service';
 import { SelectfoodComponent } from './selectfood/selectfood.component';
+import { PaymentmodalComponent } from './paymentmodal/paymentmodal.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SelectfoodComponent } from './selectfood/selectfood.component';
     HomeComponent,
     OrderfoodComponent,
     ErrorComponent,
-    SelectfoodComponent
+    SelectfoodComponent,
+    PaymentmodalComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +41,9 @@ import { SelectfoodComponent } from './selectfood/selectfood.component';
   ],
   providers: [
     OrderfoodService
+  ],
+  entryComponents: [
+    PaymentmodalComponent
   ],
   bootstrap: [AppComponent]
 })

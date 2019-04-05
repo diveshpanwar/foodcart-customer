@@ -23,7 +23,7 @@
               <div class="form-group">
                 <mat-form-field class="custom-form-control" *ngIf="fcList && fcList.length > 0">
                   <mat-label>Select a Food Court</mat-label>
-                  <mat-select formControlName="fc_id" required="true" (selectionChange)="vendorChanged()">
+                  <mat-select formControlName="fc_id" required="true" (selectionChange)="fcChanged()">
                     <mat-option *ngFor="let fc of fcList" value={{fc.id}}>{{fc.fc_name | titlecase}}</mat-option>
                   </mat-select>
                   <mat-error *ngIf="orderFoodForm.get('fc_id').hasError('required')" class="font-weight-bold">Please
@@ -33,7 +33,7 @@
               </div>
               <div class="form-group">
                 <mat-form-field class="custom-form-control" *ngIf="vendorList && vendorList.length > 0">
-                  <mat-label>Select a Vendor Court</mat-label>
+                  <mat-label>Select a Vendor</mat-label>
                   <mat-select formControlName="vendor_id" required="true">
                     <mat-option *ngFor="let vendor of vendorList" value={{vendor.id}}>{{vendor.vendor_name | titlecase}}</mat-option>
                   </mat-select>

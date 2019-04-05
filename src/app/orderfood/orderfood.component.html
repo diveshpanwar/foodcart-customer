@@ -12,10 +12,10 @@
               <div class="form-group">
                 <mat-form-field class="custom-form-control">
                   <mat-label>Select a DC</mat-label>
-                  <mat-select formControlName="dc_id" (selectionChange)="dcChanged()" required="true">
-                    <mat-option *ngFor="let dc of dcList" value={{dc.id}}>{{dc.dc_name | titlecase}}</mat-option>
+                  <mat-select formControlName="dcId" (selectionChange)="dcChanged()" required="true">
+                    <mat-option *ngFor="let dc of dcList" value={{dc.dcId}}>{{dc.dcName | titlecase}}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="orderFoodForm.get('dc_id').hasError('required')" class="font-weight-bold">Please
+                  <mat-error *ngIf="orderFoodForm.get('dcId').hasError('required')" class="font-weight-bold">Please
                     choose a DC</mat-error>
                   <mat-hint>Please Select a DC to Proceed</mat-hint>
                 </mat-form-field>
@@ -23,33 +23,65 @@
               <div class="form-group">
                 <mat-form-field class="custom-form-control" *ngIf="fcList && fcList.length > 0">
                   <mat-label>Select a Food Court</mat-label>
-                  <mat-select formControlName="fc_id" required="true" (selectionChange)="fcChanged()">
-                    <mat-option *ngFor="let fc of fcList" value={{fc.id}}>{{fc.fc_name | titlecase}}</mat-option>
+                  <mat-select formControlName="fcId" required="true" (selectionChange)="fcChanged()">
+                    <mat-option *ngFor="let fc of fcList" value={{fc.fcId}}>{{fc.fcName | titlecase}}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="orderFoodForm.get('fc_id').hasError('required')" class="font-weight-bold">Please
+                  <mat-error *ngIf="orderFoodForm.get('fcId').hasError('required')" class="font-weight-bold">Please
                     choose a Food Court</mat-error>
                   <mat-hint>Please Select a FC to Proceed</mat-hint>
                 </mat-form-field>
               </div>
               <div class="form-group">
-                <mat-form-field class="custom-form-control" *ngIf="vendorList && vendorList.length > 0">
-                  <mat-label>Select a Vendor</mat-label>
-                  <mat-select formControlName="vendor_id" required="true">
-                    <mat-option *ngFor="let vendor of vendorList" value={{vendor.id}}>{{vendor.vendor_name | titlecase}}</mat-option>
+                <mat-form-field class="custom-form-control" *ngIf="fcList && fcList.length > 0">
+                  <mat-label>Select a Menu</mat-label>
+                  <mat-select formControlName="menuType" required="true" (selectionChange)="menuChanged()">
+                    <mat-option *ngFor="let menu of menus" value={{menu}}>{{menu | titlecase}}</mat-option>
                   </mat-select>
-                  <mat-error *ngIf="orderFoodForm.get('vendor_id').hasError('required')" class="font-weight-bold">Please
-                    choose a Vendor</mat-error>
-                  <mat-hint>Please Select a Vendor</mat-hint>
+                  <mat-error *ngIf="orderFoodForm.get('menuType').hasError('required')" class="font-weight-bold">Please
+                    choose a menu</mat-error>
+                  <mat-hint>Please Select a Menu to Proceed</mat-hint>
                 </mat-form-field>
               </div>
               <div class="form-group">
-                <button type="submit" mat-raised-button color="primary" class="font-weight-bold" [disabled]="!orderFoodForm.valid">Proceed</button>
+                <mat-form-field class="custom-form-control" *ngIf="vendorList && vendorList.length > 0">
+                  <mat-label>Select a Vendor</mat-label>
+                  <mat-select formControlName="vendorId" required="true">
+                    <mat-option *ngFor="let vendor of vendorList" value={{vendor.vendorId}}
+                      (click)="vendorChanged(vendor)">
+                      {{vendor.vendorName | titlecase}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="orderFoodForm.get('vendorId').hasError('required')" class="font-weight-bold">Please
+                    choose a Vendor</mat-error>
+                  <mat-hint>Please Select a Vendor to Proceed</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-form-field class="custom-form-control" *ngIf="counterList && counterList.length > 0">
+                  <mat-label>Select a Counter</mat-label>
+                  <mat-select formControlName="counterId" required="true">
+                    <mat-option *ngFor="let counter of counterList" value={{counter.counterId}}>
+                      {{counter.counterName | titlecase}}</mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="orderFoodForm.get('counterId').hasError('required')" class="font-weight-bold">Please
+                    choose a Counter</mat-error>
+                  <mat-hint>Please Select a Counter to Proceed</mat-hint>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <button type="submit" mat-raised-button color="primary" class="font-weight-bold"
+                  [disabled]="!orderFoodForm.valid">Proceed</button>
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
+  <div class="col-12">
+    <h4 class="text-info mt-3 text-center font-weight-bold title">
+      Menu
+    </h4>
+    <hr class="special-hr">
   </div>
 </div>
 

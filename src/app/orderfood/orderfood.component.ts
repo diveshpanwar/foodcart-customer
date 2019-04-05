@@ -15,6 +15,12 @@ export class OrderfoodComponent implements OnInit {
   dcList: any;
   fcList: any;
   vendorList: any;
+  counterList: any;
+  menus = [
+    'breakfast',
+    'lunch',
+    'dinner'
+  ];
   navigationExtras: NavigationExtras;
 
   constructor(private fb: FormBuilder, private orderfoodService: OrderfoodService, private router: Router) { }
@@ -33,9 +39,11 @@ export class OrderfoodComponent implements OnInit {
     );
 
     this.orderFoodForm = this.fb.group({
-      dc_id: ['', Validators.required],
-      fc_id: ['', Validators.required],
-      vendor_id: ['', Validators.required]
+      dcId: ['', Validators.required],
+      fcId: ['', Validators.required],
+      vendorId: ['', Validators.required],
+      menuType: ['', Validators.required],
+      counterId: ['', Validators.required]
     });
   }
 
@@ -43,11 +51,11 @@ export class OrderfoodComponent implements OnInit {
     this.fcList ? this.fcList.length = 0 : null;
     this.vendorList ? this.vendorList.length = 0 : null;
     this.orderFoodForm.patchValue({
-      vendor_id: null,
-      fc_id: null
+      vendorId: null,
+      fcId: null
     });
     this.loadingData = true;
-    this.orderfoodService.getFcCList(this.orderFoodForm.get('dc_id').value).subscribe(
+    this.orderfoodService.getFcCList(this.orderFoodForm.get('dcId').value).subscribe(
       res => {
         this.fcList = res;
         this.loadingData = false;
@@ -59,28 +67,58 @@ export class OrderfoodComponent implements OnInit {
   }
 
   fcChanged() {
-    this.vendorList ? this.vendorList.length = 0 : null;
     this.loadingData = true;
+    this.vendorList ? this.vendorList.length = 0 : null;
+    this.counterList ? this.counterList = null : null;
     this.orderFoodForm.patchValue({
-      vendor_id: null,
+      menuType: null,
+      vendorId: null,
+      counterId: null
     });
+    this.orderFoodForm.patchValue({
+      vendorId: null,
+      menuType: null
+    });
+    this.loadingData = false;
+  }
 
-    this.orderfoodService.getVendorList(this.orderFoodForm.get('fc_id').value).subscribe(
-      res => {
-        this.vendorList = res;
-        this.loadingData = false;
-      }, err => {
-        console.log(err);
-        this.loadingData = false;
-      }
-    );
+  menuChanged() {
+    this.loadingData = true;
+    this.counterList ? this.counterList.length = 0 : null;
+    this.vendorList ? this.vendorList.length = 0 : null;
+    this.orderFoodForm.patchValue({
+      counterId: null,
+      vendorId: null
+    });
+    this.orderfoodService.getVendorList(
+      this.orderFoodForm.get('dcId').value,
+      this.orderFoodForm.get('fcId').value,
+      this.orderFoodForm.get('menuType').value).subscribe(
+        res => {
+          this.vendorList = res;
+          this.loadingData = false;
+        }, err => {
+          console.log(err);
+          this.loadingData = false;
+        }
+      );
+  }
+
+  vendorChanged(vendor) {
+    this.loadingData = true;
+    this.counterList ? this.counterList.length = 0 : null;
+    this.orderFoodForm.patchValue({
+      counterId: null
+    });
+    this.counterList = vendor.menu;
+    this.loadingData = false;
   }
 
   processForm() {
-    console.log(this.orderFoodForm.value);
     this.navigationExtras = {
       queryParams: this.orderFoodForm.value
     };
+    this.router.navigate(['selectFood'], this.navigationExtras);
   }
 
 }

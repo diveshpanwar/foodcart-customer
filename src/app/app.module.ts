@@ -14,6 +14,7 @@ import { NavigationReducer } from './store/reducers/navigation.reducer';
 import { OrderfoodComponent } from './orderfood/orderfood.component';
 import { ErrorComponent } from './error/error.component';
 import { OrderfoodService } from './services/orderfood.service';
+import { SelectfoodComponent } from './selectfood/selectfood.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { OrderfoodService } from './services/orderfood.service';
     LoginComponent,
     HomeComponent,
     OrderfoodComponent,
-    ErrorComponent
+    ErrorComponent,
+    SelectfoodComponent
   ],
   imports: [
     BrowserModule,

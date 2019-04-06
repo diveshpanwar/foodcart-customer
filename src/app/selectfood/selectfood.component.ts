@@ -144,7 +144,8 @@ export class SelectfoodComponent implements OnInit {
     });
 
     this.finalForm = {
-      dcId: this.dcId, fcId: this.fcId, vendorId: this.vendorId, counterId: this.counterId, menuType: this.menuType, items: itemsSelected
+      dcId: this.dcId, fcId: this.fcId, vendorId: this.vendorId, counterId: this.counterId, menuType: this.menuType, items: itemsSelected,
+      userId: '1'
     }
     const dialogRef = this.dialog.open(PaymentmodalComponent, {
       width: '90%',

@@ -50,3 +50,19 @@
     top: 35%;
     left: 50%;
 }
+
+.mat-drawer-content {
+    overflow-y: -webkit-paged-y!important;
+    overflow-x: auto!important;
+}
+
+.shadow {
+    -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.alignPrice {
+    position: absolute;
+    right: 2rem;
+}

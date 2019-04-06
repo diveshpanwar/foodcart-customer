@@ -77,11 +77,54 @@
       </div>
     </div>
   </div>
-  <div class="col-12">
+  <div class="col-12 mt-3" *ngIf="vendorList && vendorList.length > 0">
     <h4 class="text-info mt-3 text-center font-weight-bold title">
-      Menu
+      Vendors & Menu
     </h4>
     <hr class="special-hr">
+    <div class="row mt-3 mb-3" *ngFor="let vendor of vendorList">
+      <mat-card class="col-10 ml-auto mr-auto mt-3">
+        <mat-card-header>
+          <mat-card-title class="title">{{vendor.vendorName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="row" style="display: flex">
+          <div class="col-12 mr-auto ml-auto mb-3 mt-3 shadow" *ngFor="let counter of vendor.menu">
+            <h5 class="text-center text-info title">
+              Counter: {{counter.counterName}}
+            </h5>
+            <hr class="special-hr">
+            <div class="row">
+              <div class="col-12">
+                <h6 class="text-center text-info title">Slots</h6>
+                <hr class="special-hr">
+                <mat-action-list class="mr-auto ml-auto">
+                  <mat-list-item>
+                    <div class="col title text-info text-center">Slot Name</div>
+                    <div class="col title text-info text-center">Queue Size</div>
+                  </mat-list-item>
+                  <mat-list-item *ngFor="let item of counter.trafficInfo" class="row">
+                    <div class="col text-center"><small>{{item.slotName}}</small></div>
+                    <div class="col text-center"><small>{{item.queueLength}}</small></div>
+                  </mat-list-item>
+                </mat-action-list>
+              </div>
+              <div class="col-12">
+                <h6 class="text-center text-info title">Items</h6>
+                <hr class="special-hr">
+                <mat-action-list>
+                  <mat-list-item *ngFor="let item of counter.items" style="padding-left: 10px;">
+                    <mat-icon matTooltip={{item.description}} [matTooltipPosition]="'above'">info</mat-icon>
+                    &nbsp;&nbsp;
+                    {{item.mealName}}
+                    <span class="alignPrice">Price: {{item.price}}</span>
+                  </mat-list-item>
+                </mat-action-list>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>
 
